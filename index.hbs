@@ -1,0 +1,24 @@
+{{!< default}}
+
+{{!-- Posts --}}
+{{#if posts}}
+  <section class="px-5 sm:px-6 md:px-8 mt-8 mb-24" data-posts>
+    <div class="max-w-container mx-auto">
+
+      {{!-- Section title --}}
+      <h2 class="text-sm font-body font-semibold uppercase text-typ-tone pb-2.5{{#match @custom.post_feed_layout "1-column"}} border-b border-brd{{/match}}">
+        <span>{{t "Latest posts"}}</span> 
+        {{#is "paged"}}<span> — {{t "page"}} {{pagination.page}}</span>{{/is}}
+      </h2>
+
+      {{!-- Latest posts --}}
+      {{#match @custom.post_feed "latest"}}
+        {{> post-feed}}
+
+        {{!-- Pagination --}}
+        {{> pagination}}
+      {{/match}}
+
+    </div>
+  </section>
+{{/if}}
